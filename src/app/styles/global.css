@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/bricolage-grotesque/standard.css';
+@import '@fontsource-variable/geist';
+@import '../../shared/design-system/tokens/tokens.css';
+
+@layer base {
+  html {
+    background: var(--sc-bg);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* El fondo vive solo en html: si body pintara fondo, taparía las capas en z negativo (cielo del footer) */
+  body {
+    min-height: 100dvh;
+    color: var(--sc-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.5s var(--ease-fluid), color 0.5s var(--ease-fluid);
+  }
+
+  ::selection {
+    background: var(--sc-accent);
+    color: var(--sc-accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--sc-accent);
+    outline-offset: 3px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* Lenis: smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Grano fijo, sin repintar al hacer scroll */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+:root[data-theme='dark'] .grain {
+  mix-blend-mode: screen;
+  opacity: 0.04;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .grain {
+    mix-blend-mode: screen;
+    opacity: 0.04;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

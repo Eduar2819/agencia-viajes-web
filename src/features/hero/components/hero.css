@@ -1,0 +1,32 @@
+/* Barra de progreso del destino activo: se llena durante el tiempo que se muestra */
+.destination-fill {
+  transform-origin: left center;
+  animation: destination-fill var(--dur, 5600ms) linear forwards;
+}
+
+@keyframes destination-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Pase de abordar: muescas recortadas a los lados, a la altura de la perforación */
+.boarding-pass {
+  --cut: 46%;
+  -webkit-mask:
+    radial-gradient(circle 12px at 0 var(--cut), #0000 98%, #000 100%) left / 51% 100% no-repeat,
+    radial-gradient(circle 12px at 100% var(--cut), #0000 98%, #000 100%) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle 12px at 0 var(--cut), #0000 98%, #000 100%) left / 51% 100% no-repeat,
+    radial-gradient(circle 12px at 100% var(--cut), #0000 98%, #000 100%) right / 51% 100% no-repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .destination-fill {
+    animation: none;
+    transform: scaleX(1);
+  }
+}

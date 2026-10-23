@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#EEF1F4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0A1120" media="(prefers-color-scheme: dark)" />
+    <title>SosaCraft | Viajes hechos a mano</title>
+    <meta
+      name="description"
+      content="Paquetes de viaje nacionales e internacionales diseñados contigo. Cotiza por WhatsApp o correo con SosaCraft."
+    />
+    <meta property="og:title" content="SosaCraft | Viajes hechos a mano" />
+    <meta property="og:description" content="Paquetes de viaje diseñados contigo, de la primera idea al despegue." />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <script>
+      try {
+        var t = localStorage.getItem('sosacraft-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

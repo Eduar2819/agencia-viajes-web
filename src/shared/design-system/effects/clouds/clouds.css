@@ -1,0 +1,49 @@
+/*
+ * Campo de nubes. Cada campo es un contenedor de tamaño (cqw/cqh)
+ * para que las nubes deriven relativas a su caja: el cielo completo
+ * o la ventanilla. La deriva es lineal a propósito: así se mueve
+ * el viento, sin aceleraciones.
+ */
+.cloud-field {
+  container-type: size;
+  pointer-events: none;
+}
+
+.cloud-drift {
+  position: absolute;
+  left: 0;
+  will-change: transform;
+  transform: translate3d(var(--rest, 0), 0, 0);
+  animation: cloud-drift var(--dur, 120s) linear var(--delay, 0s) infinite;
+}
+
+.cloud-drift > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+@keyframes cloud-drift {
+  from {
+    transform: translate3d(calc(-1 * var(--w)), 0, 0);
+  }
+  to {
+    transform: translate3d(100cqw, 0, 0);
+  }
+}
+
+/* Cielo: un velo azul que se funde con el fondo (arriba en el hero, abajo en el footer) */
+.sky-down {
+  background: linear-gradient(180deg, var(--sc-sky) 0%, var(--sc-bg) 72%);
+}
+.sky-up {
+  background: linear-gradient(0deg, var(--sc-sky) 0%, var(--sc-bg) 85%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud-drift {
+    animation: none !important;
+    transform: translate3d(var(--rest, 0), 0, 0);
+  }
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.6" stop-color="#eef2f7"/>
+      <stop offset="1" stop-color="#c4cfde"/>
+    </linearGradient>
+    <filter id="fluff" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="soft"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="5" seed="23" result="noise"/>
+      <feDisplacementMap in="soft" in2="noise" scale="95" xChannelSelector="R" yChannelSelector="G" result="shape"/>
+      <feGaussianBlur in="shape" stdDeviation="2.5"/>
+    </filter>
+  </defs>
+  <g filter="url(#fluff)" fill="url(#shade)">
+    <ellipse cx="300" cy="260" rx="190" ry="60"/>
+    <ellipse cx="250" cy="200" rx="95" ry="85"/>
+    <ellipse cx="350" cy="180" rx="105" ry="100"/>
+  </g>
+</svg>

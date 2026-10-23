@@ -1,0 +1,5 @@
+export { PackagesSection } from './components/PackagesSection'
+export { packages, catalog, kindFilters } from './data/packages'
+export type { TravelPackage, TripKind } from './data/packages'
+export { openPackage } from './lib/events'
+export { formatDuration, formatPrice } from './lib/format'

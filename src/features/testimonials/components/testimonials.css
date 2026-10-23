@@ -1,0 +1,18 @@
+/* Timbre postal: borde perforado (agujeros solo en el perímetro) */
+.postage-stamp {
+  -webkit-mask:
+    radial-gradient(circle at center, #0000 2.6px, #000 2.9px) -5px -5px / 10px 10px round,
+    linear-gradient(#000 0 0) 5px 5px / calc(100% - 10px) calc(100% - 10px) no-repeat;
+  mask:
+    radial-gradient(circle at center, #0000 2.6px, #000 2.9px) -5px -5px / 10px 10px round,
+    linear-gradient(#000 0 0) 5px 5px / calc(100% - 10px) calc(100% - 10px) no-repeat;
+}
+
+/* Renglones de la postal, como el reverso de una tarjeta de correo */
+.postcard-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 calc(2.25rem - 1px),
+    var(--sc-line) calc(2.25rem - 1px) 2.25rem
+  );
+}

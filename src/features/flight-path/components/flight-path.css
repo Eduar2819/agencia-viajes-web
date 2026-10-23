@@ -1,0 +1,27 @@
+/* Onda de aterrizaje: dos anillos que se expanden desde el destino */
+.landing-ripple {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: landing-ripple 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.landing-ripple + .landing-ripple {
+  animation-delay: 0.35s;
+}
+
+@keyframes landing-ripple {
+  from {
+    transform: scale(0.6);
+    opacity: 0.55;
+  }
+  to {
+    transform: scale(3.4);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-ripple {
+    display: none;
+  }
+}

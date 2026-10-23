@@ -1,0 +1,144 @@
+/*
+ * SosaCraft design tokens.
+ * Fuente de verdad: docs/design-dna.json
+ * Estrategia: variables CSS semánticas (--sc-*) que cambian por tema,
+ * expuestas a Tailwind v4 mediante @theme inline.
+ */
+
+:root {
+  color-scheme: light;
+  --sc-bg: #eef1f4;
+  --sc-surface: #f7f9fb;
+  --sc-surface-2: #e2e7ee;
+  --sc-ink: #0e1726;
+  --sc-ink-muted: #4a5568;
+  --sc-line: rgb(14 23 38 / 0.1);
+  --sc-accent: #1d3fd6;
+  --sc-accent-ink: #f7f9fb;
+  --sc-accent-soft: #dce3fb;
+  --sc-danger: #b42318;
+  --sc-sky: #d3deec;
+  --sc-cloud-sky: 1;
+  --sc-cloud-front: 0.95;
+  --sc-scrim: rgb(10 17 32 / 0.5);
+  --sc-highlight: rgb(255 255 255 / 0.6);
+  --sc-shadow-tint: 14 23 38;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --sc-bg: #0a1120;
+    --sc-surface: #111a2c;
+    --sc-surface-2: #18233a;
+    --sc-ink: #e9eef5;
+    --sc-ink-muted: #a3aec2;
+    --sc-line: rgb(233 238 245 / 0.1);
+    --sc-accent: #8199ff;
+    --sc-accent-ink: #0a1120;
+    --sc-accent-soft: #1b2a55;
+  --sc-danger: #fda29b;
+  --sc-sky: #12213d;
+  --sc-cloud-sky: 0.1;
+  --sc-cloud-front: 0.55;
+    --sc-scrim: rgb(5 9 18 / 0.6);
+    --sc-highlight: rgb(255 255 255 / 0.08);
+    --sc-shadow-tint: 2 6 16;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --sc-bg: #0a1120;
+  --sc-surface: #111a2c;
+  --sc-surface-2: #18233a;
+  --sc-ink: #e9eef5;
+  --sc-ink-muted: #a3aec2;
+  --sc-line: rgb(233 238 245 / 0.1);
+  --sc-accent: #8199ff;
+  --sc-accent-ink: #0a1120;
+  --sc-accent-soft: #1b2a55;
+  --sc-danger: #fda29b;
+  --sc-sky: #12213d;
+  --sc-cloud-sky: 0.1;
+  --sc-cloud-front: 0.55;
+  --sc-scrim: rgb(5 9 18 / 0.6);
+  --sc-highlight: rgb(255 255 255 / 0.08);
+  --sc-shadow-tint: 2 6 16;
+}
+
+@theme inline {
+  --color-bg: var(--sc-bg);
+  --color-surface: var(--sc-surface);
+  --color-surface-2: var(--sc-surface-2);
+  --color-ink: var(--sc-ink);
+  --color-ink-muted: var(--sc-ink-muted);
+  --color-line: var(--sc-line);
+  --color-accent: var(--sc-accent);
+  --color-accent-ink: var(--sc-accent-ink);
+  --color-accent-soft: var(--sc-accent-soft);
+  --color-danger: var(--sc-danger);
+  --color-scrim: var(--sc-scrim);
+  /* La foto siempre es oscura detrás del texto sobre imagen: no depende del tema */
+  --color-on-photo: #f7f9fb;
+  /*
+   * WhatsApp conserva sus colores de marca (única excepción al acento cobalto).
+   * Botones con texto: teal oficial #128C7E + blanco, para que el texto se lea.
+   * Botón flotante (solo logo): verde clásico #25D366 + logo blanco.
+   */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-hover: #1fc25c;
+  --color-whatsapp-deep: #128c7e;
+  --color-whatsapp-deep-hover: #0e7a6e;
+
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --text-display: clamp(3rem, 1.4rem + 6.4vw, 7rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.035em;
+  --text-h2: clamp(2.25rem, 1.4rem + 3.4vw, 4.25rem);
+  --text-h2--line-height: 1;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h3: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+  --text-h3--line-height: 1.15;
+  --text-h3--letter-spacing: -0.015em;
+  --text-lead: 1.1875rem;
+  --text-lead--line-height: 1.55;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.45;
+
+  --radius-shell: 2rem;
+  --radius-core: 1.5rem;
+
+  --shadow-soft: 0 1px 1px rgb(var(--sc-shadow-tint) / 0.04), 0 12px 32px -12px rgb(var(--sc-shadow-tint) / 0.18);
+  --shadow-lifted: 0 2px 2px rgb(var(--sc-shadow-tint) / 0.04), 0 32px 64px -24px rgb(var(--sc-shadow-tint) / 0.32);
+  --shadow-highlight: inset 0 1px 0 var(--sc-highlight);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --breakpoint-xs: 30rem;
+}
+
+/*
+ * Ritmo vertical. Tres pasos fluidos en vez de un único bloque fijo:
+ * las secciones relacionadas respiran menos entre sí, los cambios de tema más.
+ */
+:root {
+  --space-section-tight: clamp(2.5rem, 1.75rem + 2.5vw, 4rem);
+  --space-section-base: clamp(3.5rem, 2.5rem + 3.5vw, 6rem);
+  --space-section-loose: clamp(4.5rem, 3rem + 5vw, 7.5rem);
+}
+
+/* Capas del sistema: un solo lugar para el z-index */
+:root {
+  --z-base: 0;
+  --z-raised: 10;
+  --z-fab: 40;
+  --z-nav: 50;
+  --z-overlay: 60;
+  --z-dialog: 70;
+}
